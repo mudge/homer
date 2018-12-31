@@ -1,26 +1,22 @@
 dist: trusty
 language: rust
-services: docker
-sudo: required
 
-matrix:
-  include:
-    - env: TARGET=i686-unknown-linux-gnu
-    - env: TARGET=arm-unknown-linux-gnueabihf
-    - env: TARGET=x86_64-unknown-linux-gnu
-    - env: TARGET=x86_64-apple-darwin
-      os: osx
+addons:
+  apt:
+    packages:
+      - gcc-arm-linux-gnueabihf
+      - libc6-armhf-cross
+      - libc-dev-armhf-cross
 
 before_install:
-  - sudo apt-get install -y libssl-dev
   - rustup self update
+  - rustup target install arm-unknown-linux-gnueabihf
 
 install:
-  - sh ci/install.sh
   - source ~/.cargo/env
 
 script:
-  - bash ci/script.sh
+  - cargo test
 
 before_deploy:
   - sh ci/before_deploy.sh

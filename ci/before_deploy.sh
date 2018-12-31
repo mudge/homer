@@ -15,7 +15,13 @@ main() {
 
     test -f Cargo.lock || cargo generate-lockfile
 
-    cross rustc --bin homer --target $TARGET --release -- -C lto
+    mkdir -p ~/.cargo
+    cat > ~/.cargo/config <<EOF
+[target.arm-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
+EOF
+
+    cargo build --target $TARGET --release
 
     cp target/$TARGET/release/homer $stage/
 
