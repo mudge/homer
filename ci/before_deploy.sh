@@ -2,31 +2,20 @@ set -ex
 
 main() {
     local src=$(pwd) \
-          stage=
+          stage=$(mktemp -d)
 
-    case $TRAVIS_OS_NAME in
-        linux)
-            stage=$(mktemp -d)
-            ;;
-        osx)
-            stage=$(mktemp -d -t tmp)
-            ;;
-    esac
+    rustup target install arm-unknown-linux-gnueabihf
 
-    test -f Cargo.lock || cargo generate-lockfile
+    git clone --depth=1 https://github.com/raspberrypi/tools.git
+    export PATH=$src/tools/arm-bcm2708/arm-linux-gnueabihf/bin:$PATH
+    export CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
 
-    mkdir -p ~/.cargo
-    cat > ~/.cargo/config <<EOF
-[target.arm-unknown-linux-gnueabihf]
-linker = "arm-linux-gnueabihf-gcc"
-EOF
+    cargo build --target=arm-unknown-linux-gnueabihf --release
 
-    cargo build --target $TARGET --release
-
-    cp target/$TARGET/release/homer $stage/
+    cp target/arm-unknown-linux-gnueabihf/release/homer $stage/
 
     cd $stage
-    tar czf $src/homer-$TRAVIS_TAG-$TARGET.tar.gz *
+    tar czf $src/homer-$TRAVIS_TAG-arm-unknown-linux-gnueabihf.tar.gz *
     cd $src
 
     rm -rf $stage
