@@ -1,4 +1,4 @@
-# Homer
+# Homer [![Build Status](https://travis-ci.org/mudge/homer.svg?branch=master)](https://travis-ci.org/mudge/homer)
 
 A minimal Cloudflare DNS-over-HTTPS ("DOH") proxy written in Rust.
 
