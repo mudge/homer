@@ -32,8 +32,8 @@ deploy:
   on:
     condition: $TRAVIS_RUST_VERSION = stable
     tags: true
-    provider: releases
-    skip_cleanup: true
+  provider: releases
+  skip_cleanup: true
 
 cache: cargo
 before_cache:
