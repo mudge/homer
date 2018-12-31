@@ -28,6 +28,9 @@ main() {
         x86_64-apple-ios)
             rustup target install x86_64-apple-ios
             ;;
+        arm-unknown-linux-gnueabihf)
+            rustup target install arm-unknown-linux-gnueabihf
+            ;;
     esac
 
     # This fetches latest stable release
