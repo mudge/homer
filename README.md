@@ -1,8 +1,8 @@
 # Homer [![Build Status](https://travis-ci.org/mudge/homer.svg?branch=master)](https://travis-ci.org/mudge/homer)
 
-A minimal Cloudflare DNS-over-HTTPS ("DOH") proxy written in Rust.
+A lightweight DNS-over-HTTPS ("DOH") proxy written in Rust.
 
-Homer is a lightweight proxy that will securely forward any requests to the given upstream DNS-over-HTTPS services originally designed for use on a [Pi-Hole](https://pi-hole.net).
+Homer is a lightweight proxy that will securely forward any requests to a DNS-over-HTTPS resolver such as [Cloudflare](https://developers.cloudflare.com/1.1.1.1/dns-over-https/).
 
 **Current version:** 0.2.0  
 **Supported Rust version:** 1.31
@@ -28,7 +28,7 @@ OPTIONS:
 
 ### Running on a Pi-Hole
 
-To use Homer to encrypt your DNS requests on a Pi-Hole, download and install the latest [release](https://github.com/mudge/homer/releases) on your Pi-Hole:
+To use Homer to encrypt your DNS requests on a Pi-Hole, download and install the latest [release](https://github.com/mudge/homer/releases):
 
 ```console
 pi@raspberrypi:~ $ wget https://github.com/mudge/homer/releases/download/v0.2.0/homer-v0.2.0-arm-unknown-linux-gnueabihf.tar.gz
