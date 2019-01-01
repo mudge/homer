@@ -1,14 +1,12 @@
 dist: trusty
 language: rust
+cache: cargo
 
 before_install:
   - rustup self update
 
-script:
-  - cargo test
-
 before_deploy:
-  - sh ci/before_deploy.sh
+  - ci/before_deploy.sh
 
 deploy:
   api_key:
@@ -19,16 +17,3 @@ deploy:
   provider: releases
   skip_cleanup: true
   overwrite: true
-
-cache: cargo
-before_cache:
-  - chmod -R a+r $HOME/.cargo
-
-branches:
-  only:
-    - /^v\d+\.\d+\.\d+.*$/
-    - master
-
-notifications:
-  email:
-    on_success: never
