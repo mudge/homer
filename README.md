@@ -2,7 +2,7 @@
 
 A minimal Cloudflare DNS-over-HTTPS ("DOH") proxy written in Rust.
 
-**Current version:** 0.1.0  
+**Current version:** 0.2.0  
 **Supported Rust version:** 1.31
 
 ## Install
@@ -20,8 +20,8 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -b, --bind <bind>            listen for DNS requests on this bind address and port [default: 127.0.0.1:53]
-    -u, --upstream <upstream>    URL of upstream DNS-over-HTTPS service [default: https://1.1.1.1/dns-query]
+    -b, --bind <bind>               listen for DNS requests on this address and port [default: 127.0.0.1:53]
+    -u, --upstream <upstream>...    URL(s) of upstream DNS-over-HTTPS service [default: https://1.1.1.1/dns-query]
 ```
 
 ## References

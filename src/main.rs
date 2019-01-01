@@ -2,7 +2,6 @@ use std::net::UdpSocket;
 
 use crate::args::Args;
 use crate::udp_server::UdpServer;
-use crate::upstream::Upstream;
 
 mod args;
 mod error;
@@ -20,14 +19,19 @@ fn main() {
     let server = UdpServer::new(&socket);
 
     let client = reqwest::Client::new();
-    let upstream = Upstream::new(&client, &args.upstream);
+    let upstreams = args.upstreams(&client);
 
     for request in server {
-        if let Err(e) = upstream
-            .send(&request)
-            .map(|response| server.reply(&request, response.as_slice()))
-        {
-            eprintln!("error during DNS request: {:?}", e);
+        for upstream in upstreams.iter() {
+            if let Err(e) = upstream
+                .send(&request)
+                .map(|response| server.reply(&request, response.as_slice()))
+            {
+                eprintln!("error during DNS request: {:?}", e);
+                continue;
+            }
+
+            break;
         }
     }
 }

@@ -4,20 +4,20 @@ use crate::error::{Error, Result};
 
 /// UdpServer represents an infinite series of requests over UDP.
 ///
-/// It implements the `Iterator` trait, yielding a successive `Request`s as they are received by
-/// the server.
+/// It implements the `Iterator` trait, yielding successive `Request`s as they are received by the
+/// server.
 #[derive(Clone, Copy, Debug)]
 pub struct UdpServer<'a> {
-    /// The underlying UDP socket
+    /// The underlying UDP socket.
     socket: &'a UdpSocket,
 }
 
 /// A UDP request
 #[derive(Clone, Debug, PartialEq)]
 pub struct Request {
-    /// The raw bytes of the request
+    /// The raw bytes of the request.
     pub body: Vec<u8>,
-    /// The origin of the request
+    /// The origin of the request.
     src_addr: SocketAddr,
 }
 

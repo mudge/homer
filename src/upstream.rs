@@ -4,11 +4,11 @@ use reqwest::Client;
 use crate::error::{Error, Result};
 use crate::udp_server::Request;
 
-/// Upstream represents a DNS-over-HTTPS upstream service.
+/// Upstream represents a single DNS-over-HTTPS upstream service.
 pub struct Upstream<'a> {
-    /// An HTTP client to be used for all requests
+    /// An HTTP client to be used for all requests.
     client: &'a Client,
-    /// The URL of the upstream service
+    /// The URL of the upstream service.
     url: &'a str,
 }
 
