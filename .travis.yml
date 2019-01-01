@@ -1,13 +1,7 @@
 dist: trusty
 language: rust
 cache: cargo
-
-before_install:
-  - rustup self update
-
-before_deploy:
-  - ci/before_deploy.sh
-
+before_deploy: ci/before_deploy.sh
 deploy:
   api_key:
     secure: "X+9VkLG0BizaLb3qS8bWLM0Y7DouAOKreK9jyoANHjSx+cKH1/j6lO55cjhml4eTLiMhqdinDSfoVi7w+ceONCyckUqKoquhmRIJsrzJT8Q/4Xp2nNLMDJxpzIn4rC5cZNkqIRMcOkDA9hiBdPBcpvOAikVFt9bke4TQVRKhPBMdGW/sY6UqNr6ax8UG9PXldXLWRHX9Pro251XFv3fHxIl3XxjblIqYuEX8MtClIxb05d/uWEuPvJYXR8WsX5Ajd43cLnUQa0jGvxMuvXHLy208ddrg9Xvb6YZKqBGkRMSIZUoqmB1qE9fb8gCGXffaPwpe0vqH2QP2zDVoYa7jfxFvWPEsX65vY6gUB3KCYUIg010cW9pe3bnOMGFKAcxUj3yoa4M5X2V7uxX8tTkY+vd8D4vgXsvwWx8k8/XcD6KaxXkDEwecOM3Y/JaoC3wQ/3XJxaWHmRvUaowke20i3+p88mlcLI/9IdrlcG0GfAYjbt9jLmUNHwHBws0P3cASi3r9Ryh+PDNKBycIDf0Efl1xTIIubAfRV20G0rWFLcI788i+gp/UQYYsrQiQBTwcn30osEa/rH2HjQeaWLd8iwkVanuESecBU7zG9aPRO2UhX6Hog/LtmrGt2vFPKjyGvrccJenIPA7N4FjSSP2XGD/Yt65lv5mWzEYZRFQr4jw="
