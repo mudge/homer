@@ -4,6 +4,7 @@ cache: cargo
 matrix:
   include:
     - env: TARGET=arm-unknown-linux-gnueabihf CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
+    - env: TARGET=x86_64-unknown-linux-gnu
     - env: TARGET=x86_64-apple-darwin
       os: osx
 before_deploy: ci/before_deploy.sh
