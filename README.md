@@ -88,6 +88,6 @@ Finally, you can change your Pi-Hole configuration to use `127.0.0.1#5053` as it
 
 ## License
 
-Copyright © 2018 Paul Mucur
+Copyright © 2018-2019 Paul Mucur
 
 Distributed under the MIT License.
