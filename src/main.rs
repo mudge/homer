@@ -25,7 +25,7 @@ fn main() {
         for upstream in upstreams.iter() {
             if let Err(e) = upstream
                 .send(&request)
-                .map(|response| server.reply(&request, response.as_slice()))
+                .map(|response| server.reply(&request, &response))
             {
                 eprintln!("error during DNS request: {:?}", e);
                 continue;

@@ -27,7 +27,7 @@ impl<'a> Upstream<'a> {
             .body(request.body.to_owned())
             .send()?;
 
-        let mut reply_buf: Vec<u8> = Vec::new();
+        let mut reply_buf: Vec<u8> = Vec::with_capacity(512);
 
         match response.copy_to(&mut reply_buf) {
             Ok(_) => Ok(reply_buf),
